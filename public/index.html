@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soquet</title>
+</head>
+<body>
+    <h1>Acesso</h1>
+    <script src="http://localhost:3001/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        socket.on('connect',function(){
+            console.log('connectado Ao servidor')
+        })
+        socket.on('disconnect',function(){
+            console.log('Perdamos a conexão')
+        })
+
+        socket.emit('menssagen',{nome:'Eduardo'})
+
+        socket.on('mensaje',function(payload){
+                    console.log('Escuatando :',payload)
+        })
+    </script>
+</body>
+</html>
